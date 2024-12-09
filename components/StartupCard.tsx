@@ -26,7 +26,6 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
           <span className="texzt-16-medium">{views}</span>
         </div>
       </div>
-
       <div className="flex-between mt-5 gap-5">
         <div className="flex-1">
           <Link href={`/user/${authorId}`}>
@@ -46,19 +45,16 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
           />
         </Link>
       </div>
-
       <Link href={`/startup.${_id}`}>
         <p className="startup-card_desc">{description}</p>
-
         <img src={image} alt="placeholder" className="startup-card_img" />
       </Link>
-
       <div className="flex-between gap-3 mt-5">
         <Link href={`/?query=${category.toLowerCase()}`}>
           <p className="text-16-medium">{category}</p>
         </Link>
         <Button className="startup-card_btn" asChild>
-          <Link href={`/startup/${_id}`}>Details</Link>
+          <Link href={`/startup/${_id}`}>Detaylar</Link>
         </Button>
       </div>
     </li>

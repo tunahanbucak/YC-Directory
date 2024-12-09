@@ -39,7 +39,6 @@ export default async function Home({
         </p>
         <SearchForm query={query} />
       </section>
-
       <section className="section_container">
         <p className="text-30-semibold">
           {query ? `"${query}" İçin arama sonucu` : "Tüm Girişimler"}
@@ -51,7 +50,7 @@ export default async function Home({
               <StartupCard key={post?._id} post={post} />
             ))
           ) : (
-            <p className="no-result"> No startups found</p>
+            <p className="no-result">Girişim bulunamadı.</p>
           )}
         </ul>
       </section>
