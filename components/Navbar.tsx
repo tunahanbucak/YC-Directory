@@ -11,9 +11,8 @@ const Navbar = async () => {
         <Link href="/">
           <Image src="/logo.png" alt="logo" width={144} height={30} />
         </Link>
-
         <div className="flex items-center gap-5 text-black">
-          {session && session?.user ? (
+          {session && session?.user ?
             <>
               <Link href="/startup/create">
                 <span className="max-sm:hidden">Oluştur</span>
@@ -30,13 +29,11 @@ const Navbar = async () => {
                   </span>
                 </button>
               </form>
-
               <Link href={`/user/${session?.id}`}>
                 <span>{session?.user?.name} </span>
               </Link>
             </>
-          ) : (
-            <form
+          : <form
               action={async () => {
                 "use server";
 
@@ -44,7 +41,7 @@ const Navbar = async () => {
               }}>
               <button type="submit">Oturum aç</button>
             </form>
-          )}
+          }
         </div>
       </nav>
     </header>
