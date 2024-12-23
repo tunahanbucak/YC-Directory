@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import SearchForm from "@/components/SearchForm";
 import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
@@ -10,6 +11,10 @@ export default async function Home({
 }) {
   const query = (await searchParams).query;
   const params = { search: query || null };
+
+  const session = await auth();
+
+  console.log(session?.id);
 
   //const posts = await client.fetch(STARTUPS_QUERY);
   //console.log(JSON.stringify(posts, null, 2));  verilerin, eklemelerin aninda ekranda gozukmesi icin sanityfetch kullandik diger durumda yeni eklenen seylerin ekranda gozukmesi icin  refleshlemek zorunda kaliyoruduk
