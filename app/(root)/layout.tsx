@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
 export default function Layout({
@@ -7,6 +8,7 @@ export default function Layout({
     <main className="font-work-sans">
       <Navbar />
       {children}
+      <Footer />
     </main>
   );
 }

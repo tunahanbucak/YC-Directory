@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { auth, signOut, signIn } from "@/auth";
+import { BadgePlus, LogOut } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 const Navbar = async () => {
   const session = await auth();
@@ -16,27 +18,33 @@ const Navbar = async () => {
             <>
               <Link href="/startup/create">
                 <span className="max-sm:hidden">Oluştur</span>
+                <BadgePlus className="size-6 sm:hidden" />
               </Link>
               <form
                 action={async () => {
                   "use server";
-
                   await signOut({ redirectTo: "/" });
                 }}>
                 <button type="submit">
                   <span className="max-sm:hidden text-red-500">
                     Oturumu kapat
                   </span>
+                  <LogOut className="size-6 sm:hidden text-red-500" />
                 </button>
               </form>
               <Link href={`/user/${session?.id}`}>
-                <span>{session?.user?.name} </span>
+                <Avatar className="size-10">
+                  <AvatarImage
+                    src={session?.user?.image || ""}
+                    alt={session?.user?.image || ""}
+                  />
+                  <AvatarFallback>AV</AvatarFallback>
+                </Avatar>
               </Link>
             </>
           : <form
               action={async () => {
                 "use server";
-
                 await signIn("github");
               }}>
               <button type="submit">Oturum aç</button>

@@ -1,6 +1,5 @@
 import { formatDate } from "@/lib/utils";
 import { client } from "@/sanity/lib/client";
-import { STARTUPS_BY_ID_QUERY } from "@/sanity/lib/queries";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -8,6 +7,11 @@ import markdownit from "markdown-it";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/View";
+import {
+  PLAYLIST_BY_SLUG_QUERY,
+  STARTUP_BY_ID_QUERY,
+} from "@/sanity/lib/queries";
+import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
 
 const md = markdownit();
 
@@ -15,7 +19,13 @@ export const experimental_ppr = true;
 
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;
-  const post = await client.fetch(STARTUPS_BY_ID_QUERY, { id });
+
+  const [post, { select: editorPosts }] = await Promise.all([
+    client.fetch(STARTUP_BY_ID_QUERY, { id }),
+    client.fetch(PLAYLIST_BY_SLUG_QUERY, {
+      slug: "editor-picks-new",
+    }),
+  ]);
 
   if (!post) return notFound();
 
@@ -60,10 +70,19 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
               className="prose max-w-4xl font-work-sans break-all"
               dangerouslySetInnerHTML={{ __html: parsedContent }}
             />
-          : <p className="no-result"> No detils provided</p>}
+          : <p className="no-result">Hiçbir ayrıntı verilmedi</p>}
         </div>
         <hr className="divider" />
-
+        {editorPosts?.length > 0 && (
+          <div className="max-w-4xl mx-auto">
+            <p className="text-30-semibold">Editörün Seçtikleri</p>
+            <ul className="mt-7 card_grid-sm">
+              {editorPosts.map((post: StartupTypeCard, i: number) => (
+                <StartupCard key={i} post={post} />
+              ))}
+            </ul>
+          </div>
+        )}
         <Suspense fallback={<Skeleton className="view_skeleton" />}>
           <View id={id} />
         </Suspense>
