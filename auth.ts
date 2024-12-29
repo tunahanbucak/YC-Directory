@@ -7,10 +7,12 @@ import { writeClient } from "./sanity/lib/write-client";
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [GitHub],
   callbacks: {
-    async signIn({
-      user: { name, email, image },
-      profile: { login, id, bio },
-    }) {
+    async signIn({ user: { name, email, image }, profile }) {
+      if (!profile || !profile.login || !profile.id) {
+        return false;
+      }
+
+      const { login, id, bio } = profile;
       // Sanity CMS'de, GitHub ID'sine göre mevcut bir kullanıcıyı sorguluyoruz
       const existingUser = await client
         .withConfig({ useCdn: false }) //CDN kullanmadan verileri aliyoruz

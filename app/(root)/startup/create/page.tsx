@@ -9,7 +9,7 @@ const Page = async () => {
   return (
     <>
       <section className="pink_container !min-h-[230px]">
-        <h1 className="heading">Startup'ınızı Gönderİn</h1>
+        <h1 className="heading">Startupınızı Gönderİn</h1>
       </section>
       <StartupForm />
     </>
