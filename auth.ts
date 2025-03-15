@@ -13,13 +13,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
 
       const { login, id, bio } = profile;
-      // Sanity CMS'de, GitHub ID'sine göre mevcut bir kullanıcıyı sorguluyoruz
       const existingUser = await client
-        .withConfig({ useCdn: false }) //CDN kullanmadan verileri aliyoruz
+        .withConfig({ useCdn: false })
         .fetch(AUTHOR_BY_GITHUB_ID_QUERY, {
           id,
         });
-      // Eğer kullanıcı daha önce kaydedilmemişse, yeni bir kullanıcı kaydediyoruz
       if (!existingUser) {
         await writeClient.create({
           _type: "author",
@@ -35,7 +33,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async jwt({ token, account, profile }) {
       if (account && profile) {
-        //eger bir hesap ve profil bilgisi varsa, kullanicinin ID'sini aliyoruz
         const user = await client
           .withConfig({ useCdn: false })
           .fetch(AUTHOR_BY_GITHUB_ID_QUERY, {

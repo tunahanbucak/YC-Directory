@@ -11,10 +11,7 @@ export default async function Home({
 }) {
   const query = (await searchParams).query;
   const params = { search: query || null };
-  //const session = await auth();
 
-  //const posts = await client.fetch(STARTUPS_QUERY);
-  //console.log(JSON.stringify(posts, null, 2));  verilerin, eklemelerin aninda ekranda gozukmesi icin sanityfetch kullandik diger durumda yeni eklenen seylerin ekranda gozukmesi icin  refleshlemek zorunda kaliyoruduk
   const { data: posts } = await sanityFetch({
     query: STARTUPS_QUERY,
     params,
@@ -40,11 +37,13 @@ export default async function Home({
           {query ? `"${query}" İçin arama sonucu` : "Tüm Startuplar"}
         </p>
         <ul className="mt-7 card_grid">
-          {posts?.length > 0 ?
+          {posts?.length > 0 ? (
             posts.map((post: StartupTypeCard) => (
               <StartupCard key={post?._id} post={post} />
             ))
-          : <p className="no-result">Startup bulunamadı.</p>}
+          ) : (
+            <p className="no-result">Startup bulunamadı.</p>
+          )}
         </ul>
       </section>
       <SanityLive />

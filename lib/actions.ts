@@ -10,10 +10,8 @@ export const createPitch = async <T>(
   form: FormData,
   pitch: string
 ) => {
-  // Kullanıcının oturum bilgilerini al
   const session = await auth();
 
-  // Eğer kullanıcı giriş yapmamışsa, hata mesajı döndür
   if (!session)
     return parseServerActionResponse({
       error: "Not signed in",
