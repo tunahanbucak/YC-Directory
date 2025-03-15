@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ultimate Next.js Course - YC Directory
 
-## Getting Started
+Bu proje, Ultimate Next.js kursu kapsamında geliştirilmiştir ve Next.js 15 ile modern bir web uygulaması oluşturmayı öğreten önemli bir kaynak niteliğindedir. Uygulama, Next.js'in temel özelliklerini kullanarak performans optimizasyonları ve SEO iyileştirmeleriyle birlikte kurumsal düzeyde bir uygulama geliştirmeyi hedeflemektedir.
 
-First, run the development server:
+Proje, **Sanity** API platformunu kullanarak içerik yönetimi ve yapısal veri entegrasyonu sağlamaktadır.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Proje Özellikleri
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Next.js 15'te Yeni Özellikler**: Yeni dosya yapısı, server ve client bileşenleri, API Routes, SEO optimizasyonları ve daha fazlası.
+- **Sanity Entegrasyonu**: İçerik yönetimi için Sanity API kullanımı.
+- **Authentication**: NextAuth kullanarak kullanıcı doğrulama işlemleri.
+- **Veri Çekme Yöntemleri**: SSR (Server Side Rendering), SSG (Static Site Generation), ISR (Incremental Static Regeneration) ve PPR (Partial Pre-rendering) yöntemleri.
+- **Performans İyileştirmeleri**: Next.js'in en iyi özellikleri ile uygulama performansı ve önbellekleme optimizasyonları.
+- **Gerçek Zamanlı Arama**: URL sorgu parametreleri ile gerçek zamanlı arama özelliği.
+- **Hata İzleme ve Performans Takibi**: Sentry ile uygulama hatalarını ve performansı izleme.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Kurulum
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Proje İstemcisine GitHub'dan İndirin**
 
-## Learn More
+   ```bash
+   git clone https://github.com/tunahanbucak/YC-Directory.git
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Gerekli Bağımlılıkları Yükleyin**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   Proje dizininde aşağıdaki komutu çalıştırarak gerekli bağımlılıkları yükleyin:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+3. **Çevresel Değişkenler**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   `.env.local` dosyasını oluşturun ve aşağıdaki çevresel değişkenleri ekleyin:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   NEXTAUTH_URL=your_auth_url
+   SANITY_PROJECT_ID=your_sanity_project_id
+   SANITY_DATASET=your_sanity_dataset
+   ```
+
+4. **Uygulamayı Başlatın**
+
+   Aşağıdaki komutu çalıştırarak uygulamayı başlatabilirsiniz:
+
+   ```bash
+   npm run dev
+   ```
+
+   Uygulama, `http://localhost:3000` adresinde çalışacaktır.
+
+## Kullanılan Teknolojiler
+
+- **Next.js 15**
+- **Sanity.io**
+- **NextAuth.js** (Authentication)
+- **Sentry** (Hata Takibi)
+- **React**
