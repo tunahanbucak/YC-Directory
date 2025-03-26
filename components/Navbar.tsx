@@ -18,7 +18,7 @@ const Navbar = async () => {
             <>
               <Link href="/startup/create">
                 <span className="max-sm:hidden">Oluştur</span>
-                <BadgePlus className="size-6 sm:hidden" />
+                <BadgePlus className=" mt-1 size-5 sm:hidden text-gray-900" />
               </Link>
               <form
                 action={async () => {
@@ -30,7 +30,7 @@ const Navbar = async () => {
                   <span className="max-sm:hidden text-red-500">
                     Oturumu kapat
                   </span>
-                  <LogOut className="size-6 sm:hidden text-red-500" />
+                  <LogOut className="size-5 mt-3  sm:hidden text-red-500" />
                 </button>
               </form>
               <Link href={`/user/${session?.id}`}>

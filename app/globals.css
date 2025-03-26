@@ -56,7 +56,7 @@
   }
 
   .heading {
-    @apply uppercase bg-black px-6 py-3 rounded-lg font-work-sans font-extrabold text-white sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5;
+    @apply uppercase bg-black px-6 py-3 rounded-lg font-work-sans font-extrabold text-white sm:text-[54px] sm:leading-[64px] text-[32px] leading-[46px] max-w-5xl text-center my-5;
   }
 
   .sub-heading {
@@ -124,7 +124,7 @@
   }
 
   .search-input {
-    @apply flex-1 font-bold placeholder:font-semibold placeholder:text-black-100 w-full h-auto outline-none;
+    @apply flex-1 font-bold placeholder:font-semibold placeholder:text-black-100 w-full h-auto outline-none text-[20px] sm:text-[28px];
   }
 
   .search-btn {
@@ -166,11 +166,11 @@
   }
 
   .startup-form_input {
-    @apply border-[3px] border-black px-5 py-7 text-[18px] text-black font-semibold rounded-full mt-3 placeholder:text-black-300 !important;
+    @apply border-[3px] border-black px-5 py-7 text-[14px] sm:text-[18px] text-black font-semibold rounded-full mt-3 placeholder:text-black-300 !important;
   }
 
   .startup-form_textarea {
-    @apply border-[3px] border-black p-5 text-[18px] text-black font-semibold rounded-[20px] mt-3 placeholder:text-black-300 !important;
+    @apply border-[3px] border-black p-5 text-[14px] sm:text-[18px] text-black font-semibold rounded-[20px] mt-3 placeholder:text-black-300 !important;
   }
 
   .startup-form_error {
