@@ -27,12 +27,21 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.469.0",
     "markdown-it": "^14.1.0",
+<<<<<<< HEAD
     "next": "^16.0.7",
     "next-auth": "^4.24.13",
     "next-sanity": "^11.6.10",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "sanity": "^4.20.0",
+=======
+    "next": "^15.5.7",
+    "next-auth": "^5.0.0-beta.30",
+    "next-sanity": "^9.8.30",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sanity": "^3.68.3",
+>>>>>>> b8f3344c84404d689eb7c7ad3572e6ce7b9a5e2e
     "sanity-plugin-markdown": "^5.0.0",
     "server-only": "^0.0.1",
     "slugify": "^1.6.6",
