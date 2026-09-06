@@ -6,6 +6,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import { Author, Startup } from "@/sanity/types";
 import { Skeleton } from "./ui/skeleton";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author };
 
@@ -32,10 +33,19 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
       </div>
       <div className="flex-between mt-5 gap-5">
         <div className="flex-1">
-          <Link href={`/user/${author?._id}`}>
-            <p className="text-16-medium line-clamp-1">{author?.name}</p>
-          </Link>
-          <Link href={`/startup.${_id}`}>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link href={`/user/${author?._id}`}>
+                <p className="text-16-medium line-clamp-1 font-bold cursor-pointer">
+                  {author?.name}
+                </p>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Yazar detayları</p>
+            </TooltipContent>
+          </Tooltip>
+          <Link href={`/startup/${_id}`}>
             <h3 className="text-26-semibold line-clamp-1">{title}</h3>
           </Link>
         </div>
@@ -49,7 +59,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
           />
         </Link>
       </div>
-      <Link href={`/startup.${_id}`}>
+      <Link href={`/startup/${_id}`}>
         <p className="startup-card_desc">{description}</p>
         <Image
           src={image || ""}
